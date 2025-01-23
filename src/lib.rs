@@ -12,13 +12,13 @@ By design, the Gmsh C API is purely functional, and only uses elementary types.
 
 #![doc(html_logo_url = "https://gitlab.onelab.info/gmsh/gmsh/raw/master/utils/icons/gmsh.svg")]
 
-// generated from gmshc.h @ commit d1769d55
-include!("bindings.rs");
+// include rust interface generated from gmshc.h
+include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
 #[cfg(test)]
 mod tests {
-    use std::os::raw::{c_int};
     use std::ffi::CString;
+    use std::os::raw::c_int;
 
     #[test]
     pub fn sanity() {
@@ -26,8 +26,13 @@ mod tests {
         let exec_name = CString::new("gmsh").unwrap();
         let mut ierr: c_int = 0;
         unsafe {
-             crate::gmshInitialize(1 as c_int,
-                [exec_name.into_raw()].as_mut_ptr(), 0 as c_int, &mut ierr);
+            crate::gmshInitialize(
+                1 as c_int, // argc
+                [exec_name.into_raw()].as_mut_ptr(), // argv
+                0 as c_int, // readFromConfig
+                0 as c_int, // run (added after mgsh 4.4.x)
+                &mut ierr,
+            );
         }
 
         // close gmsh

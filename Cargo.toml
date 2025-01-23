@@ -4,7 +4,7 @@ description = "Low-level bindings to the Gmsh API"
 homepage = "https://github.com/mxxo/gmsh-sys"
 documentation = "https://mxxo.github.io/gmsh-sys/gmsh_sys/index.html"
 
-version = "0.1.2"
+version = "4.13.1"
 authors = ["Max Orok <morok@mevex.com>"]
 edition = "2018"
 license-file =  "LICENSE.txt"
@@ -19,6 +19,7 @@ build = "build.rs"
 
 [build-dependencies]
 pkg-config = "0.3.16"
+bindgen = "0.71.1"
 
 [badges]
 maintenance = { status = "experimental" }
