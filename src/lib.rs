@@ -3,7 +3,7 @@
 /*!
 Low-level bindings to the Gmsh SDK.
 
-Gmsh C API bindings (v4.4.1)
+Gmsh C API bindings (v4.13.1)
 
 Gmsh is copyright (C) 1997-2019 by C. Geuzaine and J.-F. Remacle
 
